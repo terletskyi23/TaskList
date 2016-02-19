@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'bootstrap-material-design'
 gem 'quiet_assets'
 gem 'angularjs-rails'
 gem 'responders', '~> 2.0'

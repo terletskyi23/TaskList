@@ -1,11 +1,8 @@
-## TodoList
+# **TodoList**
+**Task for LITS**
 
-### Task for LITS
+Used technologies: AngularJS + Rails(API) + Bootstrap-Material-Design
 
-* * *
+---------------
 
-**Used technologies:** AngularJS + Rails(API)
-
-* * *
-
-by: VST
+_by: VST(Terletskyi V.T.), at 19.feb.16_
