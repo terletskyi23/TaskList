@@ -48,7 +48,6 @@ body{
       }
     }
 
-
     div.card.paper-shadow-top-z-3{
       width: 28%;
       height: 100%;
@@ -71,12 +70,28 @@ body{
       .status-icon-in-progress a{
         background: $blue;
       }
+      .field-name{
+        font-weight: bold;
+        font-size: 1.2rem;
+        padding-right: 0.4rem;
+      }
+      .task-field-box {
+        padding: 1.4rem;
+        font-size: 1.1rem;
+        i{
+          font-size: 1.4rem;
+          transform: rotate(0deg);
+          margin-top: 0.1rem;
+        }
+        .icn-hide{
+          display: none;
+        }
+      }
     }
     h3{
       font-size: 32px;
       text-align: center;
       margin-bottom: 30px;
-
     }
     .card{
       margin: 20px;
@@ -90,4 +105,7 @@ body{
       }
     }
   }
+}
+.right{
+  float:right;
 }
