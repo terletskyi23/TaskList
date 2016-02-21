@@ -1,3 +1,93 @@
-// Place all the styles related to the Tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$red:#F38181;
+$yellow:#FCE38A;
+$pale:#EAFFD0;
+$blue:#95E1D3;
+$cLGreen:#00AF7E;
+$cPGreen:#63C366;
+
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  height: 100%;
+  background: $pale;
+}
+.tasks-wrapper{
+  max-width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: 1rem;
+
+  .new-task{
+    width: 18%;
+    padding: 1rem;
+    display: inline-block;
+    position: relative;
+    border-right: 3px solid #333;
+  }
+
+  .tasks-conveyor{
+    width: 74%;
+    position: absolute;
+    display: inline-block;
+    right: 15px;
+    div.message{
+      width: 90%;
+    }
+
+    .filter-block{
+      button{
+        font-size: 16px;
+      }
+      .btn-warning{
+        background: $red;
+      }
+      .btn-primary{
+        background: $blue;
+      }
+    }
+
+
+    div.card.paper-shadow-top-z-3{
+      width: 28%;
+      height: 100%;
+      min-height: 250px;
+      .status-icon{
+        color: black;
+        position: absolute;
+        right:-12px;
+        top:-5px;
+          i{
+            vertical-align: middle;
+            margin: 0 auto;
+            color: #fff;
+            font-size: 2rem;
+          }
+      }
+      .status-icon-done a{
+        background: $cPGreen;
+      }
+      .status-icon-in-progress a{
+        background: $blue;
+      }
+    }
+    h3{
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 30px;
+
+    }
+    .card{
+      margin: 20px;
+      i{
+        font-size: 2.6rem;
+        color:#7D8280;
+        margin-top: -15px;
+        -ms-transform: rotate(-20deg); /* IE 9 */
+        -webkit-transform: rotate(-20deg); /* Chrome, Safari, Opera */
+        transform: rotate(-20deg);
+      }
+    }
+  }
+}
