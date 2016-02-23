@@ -1,54 +1,93 @@
-<div class="row container" ng-app="TaskCenter">
-    <h1>Tasks</h1>
-    <div class="col-md-8 col-centered" ng-controller="tasksController">
-      <div class="well">
-        <h3>Add a new Task</h3>
-        <form ng-submit="addTask()">
-          <div class="row">
-            <div class="col-xs-6">
-              <input type="text" ng-model="newTask.title" class="form-control" placeholder="title" />
-            </div>
-            <div class="col-xs-6">
-              <input type="text" ng-model="newTask.body" class="form-control" placeholder="body" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <br />
-              <input type="text" ng-model="newTask.status" class="form-control" placeholder="status" />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 text-center">
-              <br />
-              <input type="Submit" value="Add Task" class="btn btn-primary" />
-            </div>
-          </div>
-        </form>
+<div class="container" ng-app="TaskCenter">
+  <h1 class="title-head">Tasks List</h1>
+  <div class="tasks-wrapper" ng-controller="tasksController">
+    <div class="well new-task">
+      <h2>Add a new Task</h2>
+      <form ng-submit="addTask()">
+        <div class="form-group">
+          <label>Task:</label>
+          <input type="text" ng-model="newTask.title" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label >Description:</label>
+            <textarea class="form-control" rows="1" cols="20" name="text" ng-model="newTask.body"> </textarea>
+        </div>
+
+        <div class="btn-add">
+            <input type="Submit" value="+" class="btn  btn-raised">
+        </div>
+      </form>
+    </div>
+
+    <div class="tasks-conveyor">
+      <div class="filter-block">
+        <div class="search right">
+          <input type="text" ng-model="searcher" class="form-control">
+          <i class="material-icons">search</i>
+        </div>
+        <button class="btn btn-link btn-raised" ng-click="filterProducts()"><i class="material-icons">sort</i>All</button class="btn btn-primary">
+        <button class="btn btn-success btn-raised" ng-click="filterProducts('status', true)"><i class="material-icons">grade</i>DONE</button class="btn btn-primary">
+        <button class="btn btn-primary btn-raised" ng-click="filterProducts('status', false)"><i class="material-icons">flag</i>IN PROGRESS</button>
+
+      </div>
+      <div ng-show="!tasks.length">
+        <div class="announcement message">
+          <h2 class="message-tittle">Announcement</h2>
+        	<p>
+            No tasks in the building.<br>
+            Please create task in panel for left <br>
+            <i class="material-icons">&#xE31B;</i><br><br>
+          </p>
+        </div>
       </div>
 
-        <h3>Currently Tasks</h3>
-        <hr />
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>title</th>
-              <th>body</th>
-              <th>status</th>
-              <th>&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-show="!tasks.length">
-              <td colspan="4">No tasks in the building.</td>
-            </tr>
-            <tr ng-repeat="task in tasks">
-              <td>{{ task.title }}</td>
-              <td>{{ task.body }}</td>
-              <td>{{ task.status }}</td>
-              <td><a class="btn btn-danger" ng-click="deleteTask($index)">Remove</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="card paper-shadow-top-z-3" ng-repeat="task in filtered | filter:searcher">
+        <i class="material-icons">attach_file</i>
+        <div ng-click="toggleStatus($index)">
+          <div class="status-icon status-icon-done" ng-if="task.status == true">
+            <a href="javascript:void(0)" class="btn btn-default btn-fab">
+              <i class="material-icons">grade</i>
+            </a>
+          </div>
+
+          <div class="status-icon status-icon-in-progress" ng-if="task.status != true">
+            <a href="javascript:void(0)" class="btn btn-default btn-fab">
+              <i class="material-icons">flag</i>
+            </a>
+          </div>
+        </div>
+
+        <div class="task-field-box task-title">
+          <span class="field-name">Task: </span>
+          <span id="task-title-view-{{$index}}">
+            <span>{{ task.title }}</span>
+            <i class="material-icons right" ng-click="editTitle($index)">edit</i>
+          </span>
+
+          <span id="task-title-form-{{$index}}" class="icn-hide">
+            <input type="text" class="form-control" value="">
+            <i class="material-icons right" ng-click="doneTitle($index)">check</i>
+          </span>
+        </div>
+        <div class="task-field-box task-body">
+          <span class="field-name">Description: </span>
+
+          <span id="task-body-view-{{$index}}">
+            <i class="material-icons right" ng-click="editBody($index)">edit</i>
+            <p>{{ task.body }}</p>
+          </span>
+
+          <span id="task-body-form-{{$index}}" class="icn-hide">
+            <i class="material-icons right" ng-click="doneBody($index)">check</i>
+            <textarea class="form-control" rows="3" cols="20" name="text"></textarea>
+          </span>
+        </div>
+        <div class="task-field-box close-conteiner">
+          <i class="material-icons" ng-click="deleteTask($index)">close</i>
+        </div>
+        <!-- <div class="task-field-box task-body">
+            <a  id="btn-close" class="btn" ng-click="deleteTask($index)">Close Task</a>
+        </div> -->
     </div>
+  </div>
 </div>

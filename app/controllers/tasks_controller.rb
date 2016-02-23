@@ -8,6 +8,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    task = Task.find(params[:id])
+    respond_with task.update_attributes(task_params)
+  end
+
   def create
     respond_with Task.create(task_params)
   end
@@ -18,6 +23,6 @@ class TasksController < ApplicationController
 
 private
   def task_params
-    params.require(:task).permit(:title, :body)
+    params.require(:task).permit(:title, :body, :status)
   end
 end
