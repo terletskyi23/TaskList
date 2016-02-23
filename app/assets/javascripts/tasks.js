@@ -4,7 +4,6 @@ taskCenter.factory("Task", function($resource) {
   return $resource("tasks/:id", { id: '@id' }, {
     index:   { method: 'GET', isArray: true, responseType: 'json' },
     update:  { method: 'PUT', responseType: 'json' },
-    //toggle_status:  { method: 'PUT', responseType: 'json' }
   });
 })
 
@@ -41,6 +40,7 @@ taskCenter.controller("tasksController", ['$scope', 'Task', function($scope, Tas
     conteiner.find('input').val(text);
     conteiner.delay(350).fadeIn();
   }
+
   $scope.doneTitle = function(index){
     var conteiner = $(document).find("#task-title-view-"+index),
         text = conteiner.next().find('input').val()
@@ -61,6 +61,7 @@ taskCenter.controller("tasksController", ['$scope', 'Task', function($scope, Tas
     conteiner.find('textarea').text(text);
     conteiner.delay(350).fadeIn();
   }
+
   $scope.doneBody = function(index){
     var conteiner = $(document).find("#task-body-view-"+index),
         text = conteiner.next().find('textarea').val()
@@ -83,5 +84,4 @@ taskCenter.controller("tasksController", ['$scope', 'Task', function($scope, Tas
         return item[prop] === value;
     });
   };
-
 }]);

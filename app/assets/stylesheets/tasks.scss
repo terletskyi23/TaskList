@@ -1,9 +1,7 @@
-$red:#F38181;
-$yellow:#FCE38A;
-$pale:#EAFFD0;
-$blue:#95E1D3;
-$cLGreen:#00AF7E;
-$cPGreen:#63C366;
+$cTBg:#F5F5F5;
+$cDBtn:#FC5185;
+$cLBtn:#3FC1C9;
+$cBg:#364F6B;
 
 *{
   padding: 0;
@@ -11,20 +9,62 @@ $cPGreen:#63C366;
 }
 body{
   height: 100%;
-  background: $pale;
+  background: $cBg;
+  color: #fff;
+}
+.title-head{
+  font-weight: bold;
+  font-size: 2.4rem;
+  margin-top: 1rem;
+  margin-right: 3rem;
+  text-align: right;
+  //margin-left: 80%;
 }
 .tasks-wrapper{
   max-width: 100%;
   height: 100vh;
   position: relative;
   padding: 1rem;
-
   .new-task{
     width: 18%;
     padding: 1rem;
     display: inline-block;
     position: relative;
-    border-right: 3px solid #333;
+    color:#000;
+    border-top: 5px solid #3fc1c9;
+    form{
+      margin: 20px 0px;
+      .form-group{
+        margin: 20px 0px 30px
+      }
+      label{
+        font-weight: bold;
+      }
+      textarea, input{
+        margin: 10px 10px 10px 0px;
+        width: 100%;
+        font-weight: normal;
+      }
+      .btn-add{
+        position: absolute;
+        bottom: -25px;
+        left: 35%;
+        input{
+          background: $cLBtn;
+          color:#fff;
+          border-radius: 100%;
+          font-size: 38px;
+          width: 68px;
+          margin: 0 auto;
+          padding: 10px;
+
+          &:hover{
+            background: $cLBtn;
+            color:#fff;
+          }
+        }
+      }
+    }
   }
 
   .tasks-conveyor{
@@ -32,19 +72,21 @@ body{
     position: absolute;
     display: inline-block;
     right: 15px;
+    line-height: 25px;
     div.message{
       width: 90%;
     }
 
     .filter-block{
+      margin-bottom: 1rem;
       button{
         font-size: 16px;
       }
-      .btn-warning{
-        background: $red;
+      .btn-success{
+        background: $cDBtn;
       }
       .btn-primary{
-        background: $blue;
+        background: $cLBtn;
       }
     }
 
@@ -52,27 +94,29 @@ body{
       width: 28%;
       height: 100%;
       min-height: 250px;
+      background: $cTBg;
+      vertical-align: top;
       .status-icon{
         color: black;
         position: absolute;
         right:-12px;
         top:-5px;
-          i{
-            vertical-align: middle;
-            margin: 0 auto;
-            color: #fff;
-            font-size: 2rem;
-          }
+        i{
+          vertical-align: middle;
+          margin: 0 auto;
+          color: #fff;
+          font-size: 2rem;
+          cursor: pointer;
+        }
       }
       .status-icon-done a{
-        background: $cPGreen;
+        background: $cDBtn;
       }
       .status-icon-in-progress a{
-        background: $blue;
+        background: $cLBtn;
       }
       .field-name{
         font-weight: bold;
-        font-size: 1.2rem;
         padding-right: 0.4rem;
       }
       .task-field-box {
@@ -82,9 +126,24 @@ body{
           font-size: 1.4rem;
           transform: rotate(0deg);
           margin-top: 0.1rem;
+          cursor: pointer;
         }
         .icn-hide{
           display: none;
+        }
+      }
+      .close-conteiner{
+        padding-bottom: 1rem;
+        i{
+          clear:both;
+          display:block;
+          transform: rotate(0deg);
+          text-align: center;
+          font-size: 2rem;
+          &:hover{
+            color:#FC5185;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -108,4 +167,16 @@ body{
 }
 .right{
   float:right;
+  clear:both;
+}
+.search{
+  padding: 25px 10px 0px 0px;
+  input, i{
+    color:#fff;
+    font-size: 1.5rem;
+  }
+}
+#btn-close{
+  background: $cBg;
+  color: #fff;
 }
