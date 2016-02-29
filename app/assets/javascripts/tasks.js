@@ -7,7 +7,7 @@ taskCenter.factory("Task", function($resource) {
   });
 })
 
-taskCenter.controller("tasksController", ['$scope', '$http', 'Task', function($scope, Task) {
+taskCenter.controller("tasksController", ['$scope', 'Task', function($scope, Task) {
   $scope.tasks = Task.index()
 
   $scope.addTask = function() {
